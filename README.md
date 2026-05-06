@@ -14,13 +14,13 @@
 
 # ki-vertriebsteam — Sales-Plugin für Claude Code
 
-> **Skills und Agents für einen KI-augmentierten B2B-Vertriebsalltag.**
+> **Skills und Agents für einen KI-gestützten B2B-Vertriebsalltag.**
 > Default-Sprache: **Deutsch**. Antwortet automatisch in der Sprache deiner Eingabe.
 > Plugin-Version: **v1.0.0** · Veröffentlicht via **rech-studio-Marketplace**.
 
 `ki-vertriebsteam` bündelt 15 Sales-Skills und 5 parallele Research-Agents in einem Claude-Code-Plugin. Vertriebler bekommen damit out-of-the-box:
 
-- **Lead-Triage in 60 Sekunden** + **Volltiefen-Prospect-Analyse** mit 5 parallelen Subagenten
+- **Lead-Triage in 60 Sekunden** + **Prospect-Tiefenanalyse** mit 5 parallelen Subagenten
 - **Deterministisches BANT/MEDDIC-Scoring** (numerischer Backbone via `lead_scorer.py` + LLM-Qualitätsbewertung)
 - **Buying-Committee-Mapping** mit Seniority/Department/Buying-Role-Klassifikation (`contact_finder.py`)
 - **Cold-/Warm-/Referral-Email-Sequenzen**, **Meeting-Briefings**, **Angebote**, **Einwandbehandlung**
@@ -56,38 +56,38 @@ Alle Skills folgen dem Schema `/ki-vertriebsteam:<skill-name>`. Default-Output i
 
 ### Prospect-Analyse & Recherche
 
-| Skill | Beschreibung | Output |
-|---|---|---|
-| `sales` | Help-Menu + Smart-Router (Natursprache → passender Sub-Skill mit Confirmation) | Terminal |
-| `sales-quick <url>` | 60-Sekunden-Triage (1 WebFetch, kein Subagent) — Top 3 Chancen + Top 3 Bedenken | Terminal-Scorecard |
-| `sales-prospect <url>` | Volltiefen-Analyse mit 5 parallelen Subagenten + Aggregation | `PROSPECT-ANALYSIS.md` |
-| `sales-research <url>` | Firmographics + Wachstumssignale über 8 Dimensionen | `COMPANY-RESEARCH.md` |
-| `sales-qualify <url>` | BANT + MEDDIC-Scoring (deterministisch via `lead_scorer.py` + LLM-Qualität) | `LEAD-QUALIFICATION.md` |
-| `sales-contacts <url>` | Decision-Maker-Mapping mit Seniority/Department/Buying-Role-Klassifikation (`contact_finder.py`) | `DECISION-MAKERS.md` |
-| `sales-competitors <url>` | Battle-Cards für aktuell genutzte Vendor-Stack des Prospects | `COMPETITIVE-INTEL.md` |
+| Skill | Wann nutzen? | Beschreibung | Output |
+|---|---|---|---|
+| `sales` | Du weißt nicht, welcher Skill passt — beschreib's einfach in normaler Sprache | Help-Menu + Smart-Router (natürliche Sprache → passender Sub-Skill mit Confirmation) | Terminal |
+| `sales-quick <url>` | 5 Minuten vor dem Cold Call / schnelles Bauchgefühl zu einem Lead | 60-Sekunden-Triage (1 WebFetch, kein Subagent) — Top 3 Chancen + Top 3 Bedenken | Terminal-Scorecard |
+| `sales-prospect <url>` | Erstgespräch mit Tier-1-Account steht an — du brauchst die volle Tiefe | Tiefenanalyse mit 5 parallelen Subagenten + Aggregation | `PROSPECT-ANALYSIS.md` |
+| `sales-research <url>` | Du brauchst nur Firmographics & Wachstumssignale, kein Scoring | Firmographics + Wachstumssignale über 8 Dimensionen | `COMPANY-RESEARCH.md` |
+| `sales-qualify <url>` | Entscheidung: Lead weiterverfolgen oder droppen — brauchst BANT/MEDDIC | BANT + MEDDIC-Scoring (deterministisch via `lead_scorer.py` + LLM-Qualität) | `LEAD-QUALIFICATION.md` |
+| `sales-contacts <url>` | Bevor du Outreach startest — wen genau adressierst du im Buying-Committee? | Decision-Maker-Mapping mit Seniority/Department/Buying-Role-Klassifikation (`contact_finder.py`) | `DECISION-MAKERS.md` |
+| `sales-competitors <url>` | Vor Demo wenn klar ist, welche Tools sie nutzen — Switching-Story bauen | Battle-Cards für aktuell genutzte Vendor-Stack des Prospects | `COMPETITIVE-INTEL.md` |
 
 ### Outreach & Follow-up
 
-| Skill | Beschreibung | Output |
-|---|---|---|
-| `sales-outreach <prospect>` | Cold/Warm/Referral-Email-Sequenzen (5/3/3 Emails über 21/14/14 Tage) | `OUTREACH-SEQUENCE.md` |
-| `sales-followup <prospect>` | Multi-Touch Follow-up nach Meeting / Demo / Proposal | `FOLLOWUP-SEQUENCE.md` |
-| `sales-objections <topic>` | Einwand-Behandlungs-Playbook (LAER-Framework, 15 Universal + Industry-Specific) | `OBJECTION-PLAYBOOK.md` |
+| Skill | Wann nutzen? | Beschreibung | Output |
+|---|---|---|---|
+| `sales-outreach <prospect>` | Erstkontakt-Sequenz aufsetzen — Kanal je nach Lead-Wärme (Cold/Warm/Referral) | Cold/Warm/Referral-Email-Sequenzen (5/3/3 Emails über 21/14/14 Tage) | `OUTREACH-SEQUENCE.md` |
+| `sales-followup <prospect>` | Nach Meeting/Demo/Proposal — wenn der Lead nicht mehr antwortet | Multi-Touch Follow-up nach Meeting / Demo / Proposal | `FOLLOWUP-SEQUENCE.md` |
+| `sales-objections <topic>` | Vor Call mit erwartbarem Pushback / Deal stockt / SDR-Coaching auf konkreten Einwand | Einwand-Behandlungs-Playbook (LAER-Framework, 15 Universal + Industry-Specific) | `OBJECTION-PLAYBOOK.md` |
 
 ### Verkaufs-Assets
 
-| Skill | Beschreibung | Output |
-|---|---|---|
-| `sales-prep <url>` | Meeting-Briefing (Cheat Sheet, Discovery Questions, Talking Points) | `MEETING-PREP.md` |
-| `sales-proposal <client>` | 11-Section-Angebotsdokument mit ROI-Anchoring | `CLIENT-PROPOSAL.md` |
-| `sales-icp <description>` | Ideal-Customer-Profile-Builder (6 Dimensionen) | `IDEAL-CUSTOMER-PROFILE.md` |
+| Skill | Wann nutzen? | Beschreibung | Output |
+|---|---|---|---|
+| `sales-prep <url>` | 30 Minuten vor dem Meeting — Cheat Sheet, Discovery-Fragen, Talking Points | Meeting-Briefing (Cheat Sheet, Discovery Questions, Talking Points) | `MEETING-PREP.md` |
+| `sales-proposal <client>` | Discovery ist durch — jetzt geht's in die verbindliche Angebots-Phase | 11-Section-Angebotsdokument mit ROI-Anchoring | `CLIENT-PROPOSAL.md` |
+| `sales-icp <description>` | Bevor du eine Outbound-Kampagne aufsetzt — Zielprofil schärfen | Ideal-Customer-Profile-Builder (6 Dimensionen) | `IDEAL-CUSTOMER-PROFILE.md` |
 
 ### Pipeline & Reporting
 
-| Skill | Beschreibung | Output |
-|---|---|---|
-| `sales-report` | Pipeline-Report aus allen vorhandenen Analysen (Markdown) | `SALES-REPORT.md` |
-| `sales-report-pdf` | Pipeline-Report als PDF (Cover, Charts, Action Plan, Methodologie) | `SALES-REPORT-{date}.pdf` |
+| Skill | Wann nutzen? | Beschreibung | Output |
+|---|---|---|---|
+| `sales-report` | Wöchentlicher/monatlicher Pipeline-Stand für dich selbst | Pipeline-Report aus allen vorhandenen Analysen (Markdown) | `SALES-REPORT.md` |
+| `sales-report-pdf` | Pipeline-Stand für Boss / Investor / Board — teilbares PDF | Pipeline-Report als PDF (Cover, Charts, Action Plan, Methodologie) | `SALES-REPORT-{date}.pdf` |
 
 ---
 
@@ -121,7 +121,7 @@ User: "write me a cold email for example.com"
 
 **Output-Dateinamen bleiben Englisch** (`PROSPECT-ANALYSIS.md`, `MEETING-PREP.md`, ...) — maschinenfreundliche Konvention. Nur **Inhalt** der Dateien wechselt mit der Eingabesprache.
 
-Die Sprachregel ist deterministisch: byte-identisches Inline-Block in jedem Skill und Agent, kein Reliance auf Hooks (die in manchen IDE-Hosts droppen).
+Die Sprachregel ist deterministisch: wörtlich identischer Block in jedem Skill und Agent, kein Verlass auf Hooks (die in manchen IDE-Hosts nicht zuverlässig feuern).
 
 ---
 
@@ -210,7 +210,7 @@ Quellcode der Scripts: [`scripts/`](scripts/) im Plugin-Repo.
 - **Maintainer:** Jonas Rech · [rech.studio](https://rech.studio) · jonas@rech.studio
 - **Lizenz:** [MIT](LICENSE)
 
-Future-Plugins von rech.studio (Marketing, Research, ...) erscheinen im selben Marketplace — keine zweite `add`-Aktion nötig.
+Künftige Plugins von rech.studio (Marketing, Research, ...) erscheinen im selben Marketplace — keine zweite `add`-Aktion nötig.
 
 ### Smoke-Test vor Release (Maintainer)
 
