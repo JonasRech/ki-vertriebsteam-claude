@@ -1,0 +1,23 @@
+{
+  "name": "ki-vertriebsteam",
+  "version": "1.0.0",
+  "description": "KI-Vertriebsteam by rech.studio — skills and agents for an AI-augmented B2B sales workflow with deterministic BANT/MEDDIC scoring, contact extraction, and German default output.",
+  "author": {
+    "name": "Jonas Rech",
+    "email": "jonas@rech.studio",
+    "url": "https://rech.studio"
+  },
+  "homepage": "https://rech.studio",
+  "repository": "https://github.com/jonasrech/ki-vertriebsteam-claude",
+  "license": "MIT",
+  "keywords": [
+    "sales",
+    "vertrieb",
+    "skills",
+    "agents",
+    "german",
+    "deutsch",
+    "b2b",
+    "rech-studio"
+  ]
+}
